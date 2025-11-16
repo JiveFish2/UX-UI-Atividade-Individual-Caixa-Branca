@@ -39,6 +39,66 @@ Código fornecido para a atividade
     return result; }
     }//fim da class
 
+Codigo alterado
+    package login;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Autenticador {
+
+    // Variável de instância para o nome
+    public String nomeDoUsuario = "";
+
+    // Tenta estabelecer uma conexão com o banco, retorna null se falhar
+     
+    public Connection getConexao() {
+        Connection conexao = null;
+        String url = "jdbc:mysql://127.0.0.1/test?user=Lopes&password=123";
+        try {
+            // tentativa de conexão
+            Class.forName("com.mysql.Driver.Manager").newInstance();
+            conexao = DriverManager.getConnection(url);
+
+        } catch (Exception e) {
+        }
+        
+        // Ponto de retorno 
+        return conexao;
+    }
+
+    // Verifica as credenciais do usuário
+    
+    public boolean checarLogin(String login, String senha) {
+        
+        boolean acessoPermitido = false; 
+        String querySQL = "SELECT nome FROM usuarios " +
+                          "WHERE login = '" + login + "' " +
+                          "AND senha = '" + senha + "';";
+
+        Connection conn = this.getConexao();
+        Statement comando = null;
+        ResultSet resultado = null;
+        try { 
+            comando = conn.createStatement();
+            resultado = comando.executeQuery(querySQL);
+
+            // Bloco de decisão
+            if (resultado.next()) {
+                // Caminho de sucesso
+                this.nomeDoUsuario = resultado.getString("nome");
+                acessoPermitido = true;
+            }
+            
+            // (else vai para finally e return
+        } catch (Exception e) {
+        }
+        return acessoPermitido;
+    }    
+    }
+
 Fluxo de Controle
 
 Grafo de Fluxo
