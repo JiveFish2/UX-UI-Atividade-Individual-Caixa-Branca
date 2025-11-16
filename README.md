@@ -40,14 +40,15 @@ Código fornecido para a atividade
     }//fim da class
 
 Codigo alterado
+
     package login;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.ResultSet;
+    import java.sql.Statement;
 
-public class Autenticador {
+    public class Autenticador {
 
     // Variável de instância para o nome
     public String nomeDoUsuario = "";
@@ -98,68 +99,6 @@ public class Autenticador {
         return acessoPermitido;
     }    
     }
-
-Fluxo de Controle
-
-Grafo de Fluxo
-
-Nó 1: Início (Declaração de sql, chamada conectarBD(), construção da string SQL)
-
-Nó 2: Bloco try (Criação do Statement, execução do executeQuery)
-
-Nó 3: Decisão if (rs.next())
-
-Nó 4: Bloco if-true (return true; e nome = ... (inalcançável))
-
-Nó 5: Bloco catch (Captura da exceção)
-
-Nó 6: Fim do try-catch e return result;
-
-Nó 7: Fim do método
-
-Arestas (Fluxo de Controle):
-
-1 → 2 (Fluxo normal)
-
-2 → 3 (Sucesso no try, vai para o if)
-
-2 → 5 (Erro no try, pula para o catch)
-
-3 → 4 (if é verdadeiro)
-
-3 → 6 (if é falso)
-
-4 → 7 (Sai do método)
-
-5 → 6 (Sai do catch e continua)
-
-6 → 7 (Sai do método)
-
-Complexidade Ciclomática
-
-Resultado: V(G) = 3
-
-Cálculo (Nós e Arestas):
-
-Nós (N) = 7
-
-Arestas (A) = 8
-
-V(G) = Arestas – Nós + 2
-
-V(G) = 8 – 7 + 2
-
-V(G) = 3
-
-Cálculo (Pontos de Decisão):
-
-Decisões (P) = 2 (1. o try-catch, 2. o if)
-
-V(G) = Decisões + 1
-
-V(G) = 2 + 1
-
-V(G) = 3
 
 Caminhos Básicos
 Com base no V(G) = 3, estes são os 3 caminhos de teste necessários:
