@@ -38,3 +38,58 @@ Codigo fornecido para a atividade
         }catch (Exception e) {  }
     return result; }
     }//fim da class
+
+Definição dos Nós 
+Nó 1:
+
+String sql = "";
+
+Connection conn = conectarBD();
+
+Construção da string sql
+
+Nó 2 (Bloco Try):
+
+Statement st = conn.createStatement();
+
+ResultSet rs = st.executeQuery(sql);
+
+Nó 3 (Decisão P1):
+
+if (rs.next())
+
+Nó 4 (Bloco If-True):
+
+nome = rs.getString("nome");
+
+return true;
+
+Nó 5 (Bloco Catch):
+
+catch (Exception e) { }
+
+Nó 6 (Return Final):
+
+return result;
+
+Nó 7 (Fim):
+
+Ponto de saída do método.
+
+Definição das Arestas 
+
+1 -> 2: Fluxo padrão do início para o bloco try.
+
+2 -> 3: O try foi bem-sucedido e o fluxo segue para a decisão if.
+
+2 -> 5: O try falhou (gerou uma exceção) e o fluxo desvia para o catch.
+
+3 -> 4: A condição if foi verdadeira.
+
+3 -> 6: A condição if foi falsa.
+
+4 -> 7: O método termina após o return true.
+
+5 -> 6: O bloco catch termina e o fluxo segue para o return final.
+
+6 -> 7: O método termina após o return result.
