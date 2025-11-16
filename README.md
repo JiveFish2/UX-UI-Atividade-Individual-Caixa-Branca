@@ -1,7 +1,7 @@
 # UX-UI-Atividade-Individual-Caixa-Branca
 Repositório da primeira parte da atividade individual caixa branca 
 
-Codigo fornecido para a atividade
+Código fornecido para a atividade
 
     package login;
 
@@ -39,57 +39,85 @@ Codigo fornecido para a atividade
     return result; }
     }//fim da class
 
-Definição dos Nós 
-Nó 1:
+Fluxo de Controle
 
-String sql = "";
+Grafo de Fluxo
 
-Connection conn = conectarBD();
+Nó 1: Início (Declaração de sql, chamada conectarBD(), construção da string SQL)
 
-Construção da string sql
+Nó 2: Bloco try (Criação do Statement, execução do executeQuery)
 
-Nó 2 (Bloco Try):
+Nó 3: Decisão if (rs.next())
 
-Statement st = conn.createStatement();
+Nó 4: Bloco if-true (return true; e nome = ... (inalcançável))
 
-ResultSet rs = st.executeQuery(sql);
+Nó 5: Bloco catch (Captura da exceção)
 
-Nó 3 (Decisão P1):
+Nó 6: Fim do try-catch e return result;
 
-if (rs.next())
+Nó 7: Fim do método
 
-Nó 4 (Bloco If-True):
+Arestas (Fluxo de Controle):
 
-nome = rs.getString("nome");
+1 → 2 (Fluxo normal)
 
-return true;
+2 → 3 (Sucesso no try, vai para o if)
 
-Nó 5 (Bloco Catch):
+2 → 5 (Erro no try, pula para o catch)
 
-catch (Exception e) { }
+3 → 4 (if é verdadeiro)
 
-Nó 6 (Return Final):
+3 → 6 (if é falso)
 
-return result;
+4 → 7 (Sai do método)
 
-Nó 7 (Fim):
+5 → 6 (Sai do catch e continua)
 
-Ponto de saída do método.
+6 → 7 (Sai do método)
 
-Definição das Arestas 
+Complexidade Ciclomática
 
-1 -> 2: Fluxo padrão do início para o bloco try.
+Resultado: V(G) = 3
 
-2 -> 3: O try foi bem-sucedido e o fluxo segue para a decisão if.
+Cálculo (Nós e Arestas):
 
-2 -> 5: O try falhou (gerou uma exceção) e o fluxo desvia para o catch.
+Nós (N) = 7
 
-3 -> 4: A condição if foi verdadeira.
+Arestas (A) = 8
 
-3 -> 6: A condição if foi falsa.
+V(G) = Arestas – Nós + 2
 
-4 -> 7: O método termina após o return true.
+V(G) = 8 – 7 + 2
 
-5 -> 6: O bloco catch termina e o fluxo segue para o return final.
+V(G) = 3
 
-6 -> 7: O método termina após o return result.
+Cálculo (Pontos de Decisão):
+
+Decisões (P) = 2 (1. o try-catch, 2. o if)
+
+V(G) = Decisões + 1
+
+V(G) = 2 + 1
+
+V(G) = 3
+
+Caminhos Básicos
+Com base no V(G) = 3, estes são os 3 caminhos de teste necessários:
+
+Caminho 1: Sucesso (Usuário Encontrado)
+
+Percurso: 1 → 2 → 3(true) → 4 → 7
+
+Teste: Login e senha corretos.
+
+Caminho 2: Falha (Usuário Não Encontrado)
+
+Percurso: 1 → 2 → 3(false) → 6 → 7
+
+Teste: Login ou senha incorretos.
+
+Caminho 3: Exceção (Erro no Banco)
+
+Percurso: 1 → 2 → 5 → 6 → 7
+
+Teste: Simular uma falha de conexão (ex: conn nulo ou banco offline).
