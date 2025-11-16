@@ -100,8 +100,7 @@ Codigo alterado
     }    
     }
 
-2. Complexidade Ciclomática (V(G))
-O cálculo (V(G)) nos diz quantos testes são necessários para cobrir todas as lógicas.
+2. Complexidade Ciclomática
 
 Resultado: V(G) = 3
 
@@ -128,7 +127,7 @@ V(G) = 2 + 1
 V(G) = 3
 
 3. Caminhos Básicos
-Com V(G) = 3, precisamos destes 3 casos de teste:
+Com V(G) = 3 casos de teste
 
 Caminho 1: Sucesso (Usuário Encontrado)
 
@@ -146,4 +145,3 @@ Caminho 3: Exceção (Erro no Banco)
 
 Percurso: 1 → 2 → 5 → 6 → 7
 
-Teste: Simular uma falha de conexão (ex: conn nulo ou banco offline).
