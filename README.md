@@ -100,12 +100,39 @@ Codigo alterado
     }    
     }
 
-Caminhos Básicos
-Com base no V(G) = 3, estes são os 3 caminhos de teste necessários:
+2. Complexidade Ciclomática (V(G))
+O cálculo (V(G)) nos diz quantos testes são necessários para cobrir todas as lógicas.
+
+Resultado: V(G) = 3
+
+Cálculo (Nós e Arestas):
+
+Nós (N) = 7
+
+Arestas (A) = 8
+
+V(G) = Arestas – Nós + 2
+
+V(G) = 8 – 7 + 2
+
+V(G) = 3
+
+Cálculo (Pontos de Decisão):
+
+Decisões (P) = 2 (1. o try-catch, 2. o if)
+
+V(G) = Decisões + 1
+
+V(G) = 2 + 1
+
+V(G) = 3
+
+3. Caminhos Básicos
+Com V(G) = 3, precisamos destes 3 casos de teste:
 
 Caminho 1: Sucesso (Usuário Encontrado)
 
-Percurso: 1 → 2 → 3(true) → 4 → 7
+Percurso: 1 → 2 → 3(true) → 4 → 6 → 7
 
 Teste: Login e senha corretos.
 
