@@ -3,14 +3,14 @@ Repositório da primeira parte da atividade individual caixa branca
 
 Codigo fornecido para a atividade
 
-package login;
+    package login;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.ResultSet;
+    import java.sql.Statement;
 
-public class User   {
+    public class User   {
     public Connection conectarBD() {
     Connection conn = null;
     try{
